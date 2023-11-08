@@ -3,7 +3,7 @@
 const rule = require("../lib/rules/no-redundant-vars");
 const RuleTester = require("eslint").RuleTester;
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: "latest" } });
+const ruleTester = new RuleTester();
 
 ruleTester.run("no-redundant-vars", rule, {
   valid: [
