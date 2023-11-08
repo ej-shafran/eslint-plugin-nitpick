@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "eslint-plugin-nitpick",
+  "version": "0.0.1",
+  "description": "An ESLint plugin for nitpicky rules.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ej-shafran/eslint-plugin-nitpick.git"
+  },
+  "keywords": [
+    "eslint",
+    "javascript",
+    "typescript"
+  ],
+  "author": "ej-shafran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ej-shafran/eslint-plugin-nitpick/issues"
+  },
+  "homepage": "https://github.com/ej-shafran/eslint-plugin-nitpick#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "prettier": "^3.0.3"
+  }
+}
