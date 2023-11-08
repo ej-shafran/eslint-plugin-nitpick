@@ -24,13 +24,3 @@ function calculate() {
     return x + y * z;
 }
 ```
-
-## Rule Options
-
-```js
-...
-"nitpick/no-redundant-vars": []
-...
-```
-
-This rule takes no options.
