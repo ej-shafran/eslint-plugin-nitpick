@@ -10,9 +10,9 @@
 
 ```js
 function calculate() {
-    // logic...
-    const result = x + y * z;
-    return result;
+  // logic...
+  const result = x + y * z;
+  return result;
 }
 ```
 
@@ -20,7 +20,7 @@ function calculate() {
 
 ```js
 function calculate() {
-    // logic...
-    return x + y * z;
+  // logic...
+  return x + y * z;
 }
 ```
