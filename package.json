@@ -14,7 +14,8 @@
     "test:coverage": "nyc mocha",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "build:docs": "eslint-doc-generator"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
   "homepage": "https://github.com/ej-shafran/eslint-plugin-nitpick#readme",
   "devDependencies": {
     "eslint": "^8.53.0",
+    "eslint-doc-generator": "^1.5.4",
     "eslint-plugin-eslint-plugin": "^5.1.1",
     "eslint-plugin-n": "^16.3.0",
     "mocha": "^10.2.0",
