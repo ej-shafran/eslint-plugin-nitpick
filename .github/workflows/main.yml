@@ -40,6 +40,8 @@ jobs:
         run: pnpm test:coverage
 
   format:
+    needs: docs
+
     name: Format
     runs-on: ubuntu-latest
 
