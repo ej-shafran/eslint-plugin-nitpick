@@ -34,12 +34,6 @@ function temporary() {
   return x;
 }`,
       errors: [{ messageId: "noRedundantVars" }],
-      // TODO: fix this and change the test!
-      output: `\
-function temporary() {
-  
-  return 10;
-}`,
     },
   ],
 });
