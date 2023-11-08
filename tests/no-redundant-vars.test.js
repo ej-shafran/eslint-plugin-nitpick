@@ -8,16 +8,38 @@ const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: "latest" } });
 ruleTester.run("no-redundant-vars", rule, {
   valid: [
     {
-      code: "function temporary() { return 10; }",
-      options: [],
+      name: "should ignore a simple return",
+      code: `\
+function temporary() {
+  return 10;
+}`,
+    },
+    {
+      name: "should ignore a used variable",
+      code: `\
+function temporary() {
+  const x = 10;
+  console.log(x);
+  return x;
+}`,
     },
   ],
 
   invalid: [
     {
-      code: "function temporary() {\nconst x = 10;\nreturn x;\n}",
+      name: "should error for a redundant variable",
+      code: `\
+function temporary() {
+  const x = 10;
+  return x;
+}`,
       errors: [{ messageId: "noRedundantVars" }],
-      output: "function temporary() {\n\nreturn 10;\n}"
+      // TODO: fix this and change the test!
+      output: `\
+function temporary() {
+  
+  return 10;
+}`,
     },
   ],
 });
