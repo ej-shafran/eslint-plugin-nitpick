@@ -34,5 +34,8 @@
     "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.53.0",
     "prettier": "^3.0.3"
+  },
+  "publishConfig": {
+    "@ej-shafran:registry": "https://npm.pkg.github.com"
   }
 }
