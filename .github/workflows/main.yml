@@ -34,10 +34,10 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
-      - name: Run tests
-        run: pnpm test
       - name: Run lint
         run: pnpm lint
+      - name: Run tests
+        run: pnpm test
 
   format:
     name: Format
@@ -59,4 +59,4 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           commit_message: "chore: format code"
-          prettier_options: "--write"
+          prettier_options: "--write **/*"
