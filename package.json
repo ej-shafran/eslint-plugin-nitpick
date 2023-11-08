@@ -9,7 +9,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests written yet\" && exit 0",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
