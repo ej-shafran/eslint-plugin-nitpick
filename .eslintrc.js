@@ -7,7 +7,6 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:eslint-plugin/recommended",
     "plugin:n/recommended",
   ],
@@ -22,11 +21,10 @@ module.exports = {
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
   },
-  plugins: ["@typescript-eslint", "eslint-plugin", "n"],
+  plugins: ["eslint-plugin", "n"],
   rules: {
     "n/exports-style": ["error", "module.exports"],
   },
