@@ -37,7 +37,7 @@ jobs:
       - name: Run lint
         run: pnpm lint
       - name: Run tests
-        run: pnpm test
+        run: pnpm test:coverage
 
   format:
     name: Format

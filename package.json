@@ -11,6 +11,7 @@
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha --watch",
+    "test:coverage": "nyc mocha",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
@@ -39,6 +40,7 @@
     "eslint-plugin-eslint-plugin": "^5.1.1",
     "eslint-plugin-n": "^16.3.0",
     "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
     "prettier": "^3.0.3"
   },
   "publishConfig": {
