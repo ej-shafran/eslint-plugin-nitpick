@@ -5,7 +5,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:eslint-plugin/recommended",
+    "plugin:n/recommended",
+  ],
   overrides: [
     {
       env: {
@@ -21,6 +26,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
-  plugins: ["@typescript-eslint"],
-  rules: {},
+  plugins: ["@typescript-eslint", "eslint-plugin", "n"],
+  rules: {
+    "n/exports-style": ["error", "module.exports"],
+  },
 };
