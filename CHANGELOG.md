@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 
 - Editor suggestions for [`no-redundant-vars`](https://github.com/ej-shafran/eslint-plugin-nitpick/wiki/no-redundant-vars)
+- An MIT license
 
 ## [0.0.2] - 2023-11-09
 

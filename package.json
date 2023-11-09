@@ -6,7 +6,9 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "mocha",
