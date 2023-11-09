@@ -37,7 +37,7 @@ jobs:
         id: changelog
         run: |
           # Parse the changelog for common links
-          _links="$(grep -P '^\[.*]:.+' ${GITHUB_WORKSPACE}/CHANGELOG.md | sort -u)"
+          _links="$(grep -P '^\[\D*]:.+' ${GITHUB_WORKSPACE}/CHANGELOG.md | sort -u)"
           _links="${_links//'%'/'%25'}"
           _links="${_links//$'\n'/'%0A'}"
           _links="${_links//$'\r'/'%0D'}"
