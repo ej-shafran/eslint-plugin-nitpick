@@ -23,6 +23,13 @@ function temporary() {
   return x;
 }`,
     },
+    {
+      name: "should ignore an empty return",
+      code: `\
+function temporary() {
+  return;
+}`,
+    },
   ],
 
   invalid: [
@@ -33,7 +40,46 @@ function temporary() {
   const x = 10;
   return x;
 }`,
-      errors: [{ messageId: "noRedundantVars" }],
+      errors: [
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "x" },
+              output: `\
+function temporary() {
+  
+  return 10;
+}`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "should work for multiple declarations",
+      code: `\
+function temporary() {
+  const a = 10, b = 20, c = 30;
+  return b;
+}`,
+      errors: [
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "b" },
+              output: `\
+function temporary() {
+  const a = 10, c = 30;
+  return 20;
+}`,
+            },
+          ],
+        },
+      ],
     },
   ],
 });
