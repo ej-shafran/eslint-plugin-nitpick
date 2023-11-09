@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- The [`no-useless-rest`](https://github.com/ej-shafran/eslint-plugin-nitpick/wiki/no-useless-rest) rule.
+- The [`no-useless-rest`](https://github.com/ej-shafran/eslint-plugin-nitpick/wiki/no-useless-rest) rule
 
 ## [0.2.0] - 2023-11-09
 
