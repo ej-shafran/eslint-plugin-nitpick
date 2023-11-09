@@ -36,8 +36,26 @@ function temporary() {
 async function temporary() {
   const { result } = await doSomething();
   return result;
+}
+
+async function other() {
+  const [result] = await doSomething();
+  return result;
 }`,
     },
+  {
+    name: "should ignore one of many destructured elements",
+    code: `\
+function temporary() {
+  const { keyA, keyB } = obj;
+  return keyB;
+}
+
+function other() {
+  const [elA, elB] = arr;
+  return elA;
+}`
+  }
   ],
 
   invalid: [
@@ -107,6 +125,59 @@ function temporary() {
 function temporary() {
   
   return data.result;
+}`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "should properly handle array destructring",
+      code: `\
+function temporary() {
+  const [result] = data;
+  return result;
+}
+
+function other() {
+  const [, result] = data;
+  return result;
+}`,
+      errors: [
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "result" },
+              output: `\
+function temporary() {
+  
+  return data[0];
+}
+
+function other() {
+  const [, result] = data;
+  return result;
+}`,
+            },
+          ],
+        },
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "result" },
+              output: `\
+function temporary() {
+  const [result] = data;
+  return result;
+}
+
+function other() {
+  
+  return data[1];
 }`,
             },
           ],
