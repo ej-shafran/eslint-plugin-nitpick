@@ -30,6 +30,14 @@ function temporary() {
   return;
 }`,
     },
+    {
+      name: "should ignore a destructured `await`",
+      code: `\
+async function temporary() {
+  const { result } = await doSomething();
+  return result;
+}`,
+    },
   ],
 
   invalid: [
