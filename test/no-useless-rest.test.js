@@ -15,6 +15,16 @@ ruleTester.run("no-useless-rest", rule, {
       name: "should ignore a useful rest argument (array)",
       code: "const [el, ...rest] = arr;",
     },
+    {
+      name: "should ignore objects when explicitly configured",
+      code: "const { ...rest } = obj;",
+      options: [{ object: false }],
+    },
+    {
+      name: "should ignore arrays when explicitly configured",
+      code: "const [ ...rest] = arr;",
+      options: [{ array: false }],
+    },
   ],
 
   invalid: [
