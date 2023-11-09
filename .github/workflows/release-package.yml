@@ -144,7 +144,7 @@ jobs:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
           always-auth: true
-          scope: '@ej-shafran'
+          scope: "@ej-shafran"
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
         with:
@@ -165,7 +165,7 @@ jobs:
       - name: Change package name
         run: npm pkg set name='@ej-shafran/eslint-plugin-nitpick'
       - name: Publish package
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
