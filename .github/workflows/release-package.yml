@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +40,8 @@ jobs:
   publish-gpr:
     needs: build
 
+    name: Publish NPM Package
+
     runs-on: ubuntu-latest
 
     permissions:
@@ -52,6 +55,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          always-auth: true
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
         with:
@@ -72,9 +76,11 @@ jobs:
       - name: Publish package
         run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-wiki:
+    name: Publish Wiki
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
