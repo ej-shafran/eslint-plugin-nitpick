@@ -89,5 +89,29 @@ function temporary() {
         },
       ],
     },
+    {
+      name: "should properly handle object destructuring",
+      code: `\
+function temporary() {
+  const { result } = data;
+  return result;
+}`,
+      errors: [
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "result" },
+              output: `\
+function temporary() {
+  
+  return data.result;
+}`,
+            },
+          ],
+        },
+      ],
+    },
   ],
 });
