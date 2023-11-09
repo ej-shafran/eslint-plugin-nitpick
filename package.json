@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ej-shafran/eslint-plugin-nitpick.git"
+    "url": "git+https://github.com/ej-shafran/eslint-plugin-nitpick-package.git"
   },
   "keywords": [
     "eslint",
