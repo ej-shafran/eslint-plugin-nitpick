@@ -63,7 +63,7 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           commit_message: "chore: format code"
-          prettier_options: "--write **/*"
+          prettier_options: "--write **/*.{js,md}"
 
   docs:
     name: Build Docs
