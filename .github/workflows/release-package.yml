@@ -164,6 +164,8 @@ jobs:
         run: pnpm install
       - name: Change package name
         run: npm pkg set name='@ej-shafran/eslint-plugin-nitpick'
+      - name: Change package publishConfig
+        run: npm pkg set publishConfig."@ej-shafran:registry"='https://registry.npmjs.org'
       - name: Publish package
         run: npm publish --access public
         env:
