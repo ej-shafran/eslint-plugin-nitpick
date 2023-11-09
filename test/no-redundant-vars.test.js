@@ -43,9 +43,9 @@ async function other() {
   return result;
 }`,
     },
-  {
-    name: "should ignore one of many destructured elements",
-    code: `\
+    {
+      name: "should ignore one of many destructured elements",
+      code: `\
 function temporary() {
   const { keyA, keyB } = obj;
   return keyB;
@@ -54,8 +54,8 @@ function temporary() {
 function other() {
   const [elA, elB] = arr;
   return elA;
-}`
-  }
+}`,
+    },
   ],
 
   invalid: [
@@ -178,6 +178,30 @@ function temporary() {
 function other() {
   
   return data[1];
+}`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "should wrap complicated expressions in parens",
+      code: `\
+function temporary() {
+  const { result } = a ? b : c;
+  return result;
+}`,
+      errors: [
+        {
+          messageId: "noRedundantVars",
+          suggestions: [
+            {
+              messageId: "inlineVariable",
+              data: { variable: "result" },
+              output: `\
+function temporary() {
+  
+  return (a ? b : c).result;
 }`,
             },
           ],
