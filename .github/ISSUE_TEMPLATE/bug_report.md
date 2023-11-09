@@ -1,10 +1,9 @@
 ---
 name: Bug report
 about: Report a bug or other issue
-title: ''
+title: ""
 labels: bug
 assignees: ej-shafran
-
 ---
 
 ## Description
@@ -18,6 +17,7 @@ assignees: ej-shafran
 
 > **Steps to reproduce**
 > Minimal steps to reproduce the behavior:
+>
 > 1. Create an NPM project
 > 2. Install `eslint` and `eslint-plugin-nitpick`
 > 3. Write this code into that file

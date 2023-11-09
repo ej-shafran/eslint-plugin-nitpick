@@ -48,9 +48,9 @@ module.exports = {
 ✅ Set in the `recommended` configuration.\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
 
-| Name                                                 | Description                                                       | 💼   | 💡 |
-| :--------------------------------------------------- | :---------------------------------------------------------------- | :--- | :- |
-| [no-redundant-vars](docs/rules/no-redundant-vars.md) | Warns against variables that are returned without any other usage | 🌐 ✅ | 💡 |
+| Name                                                 | Description                                                       | 💼    | 💡  |
+| :--------------------------------------------------- | :---------------------------------------------------------------- | :---- | :-- |
+| [no-redundant-vars](docs/rules/no-redundant-vars.md) | Warns against variables that are returned without any other usage | 🌐 ✅ | 💡  |
 
 <!-- end auto-generated rules list -->
 
@@ -58,9 +58,9 @@ module.exports = {
 
 <!-- begin auto-generated configs list -->
 
-|    | Name          |
-| :- | :------------ |
-| 🌐 | `all`         |
+|     | Name          |
+| :-- | :------------ |
+| 🌐  | `all`         |
 | ✅  | `recommended` |
 
 <!-- end auto-generated configs list -->

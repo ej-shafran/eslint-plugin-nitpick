@@ -1,10 +1,9 @@
 ---
 name: Rule request
 about: Suggest an idea for a nitpicky rule
-title: ''
+title: ""
 labels: enhancement
 assignees: ej-shafran
-
 ---
 
 ## Rule Concept
