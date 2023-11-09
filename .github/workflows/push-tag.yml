@@ -7,6 +7,8 @@ on:
 
 jobs:
   release:
+    name: Publish GitHub Release
+
     if: github.event.repository.fork == false
 
     runs-on: ubuntu-latest
