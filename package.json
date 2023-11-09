@@ -46,6 +46,6 @@
     "prettier": "^3.0.3"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@ej-shafran:registry": "https://npm.pkg.github.com"
   }
 }
