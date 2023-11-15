@@ -7,6 +7,8 @@ on:
 
 jobs:
   release:
+    needs: build
+
     name: Publish GitHub Release
 
     if: github.event.repository.fork == false
@@ -57,8 +59,6 @@ jobs:
   build:
     name: Build
 
-    needs: release
-
     runs-on: ubuntu-latest
 
     steps:
@@ -89,7 +89,7 @@ jobs:
         run: pnpm test
 
   publish-npm:
-    needs: build
+    needs: release
 
     name: Publish NPM Package
 
@@ -131,7 +131,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
   publish-gpr:
-    needs: build
+    needs: release
 
     name: Publish GitHub Package
 
@@ -176,7 +176,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   publish-scoped:
-    needs: build
+    needs: release
 
     name: Publish NPM Package (scoped)
 
