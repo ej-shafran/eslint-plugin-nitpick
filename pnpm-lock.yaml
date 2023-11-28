@@ -6,7 +6,7 @@ settings:
 
 devDependencies:
   eslint:
-    specifier: ^8.53.0
+    specifier: ^8.54.0
     version: 8.54.0
   eslint-doc-generator:
     specifier: ^1.6.1
