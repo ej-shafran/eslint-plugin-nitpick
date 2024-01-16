@@ -22,6 +22,16 @@ ruleTester.run("no-redundant-vars", rule, {
       ].join("\n"),
     },
     {
+      name: "should ignore if there is code between the declaration and return",
+      code: [
+        "function temporary() {",
+        "  const x = 10;",
+        "  doSomethingThatHasToHappenAfterX();",
+        "  return x",
+        "}",
+      ].join("\n"),
+    },
+    {
       name: "should ignore an empty return",
       code: ["function temporary() {", "  return;", "}"].join("\n"),
     },
