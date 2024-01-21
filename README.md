@@ -26,7 +26,7 @@ module.exports = {
 };
 ```
 
-## New (`eslint.config.js`)
+### New (`eslint.config.js`)
 
 Either use one of the configs in `eslint-plugin-nitpick/lib/configs` or import the plugin as a standalone from `eslint-plugin-nitpick`.
 
