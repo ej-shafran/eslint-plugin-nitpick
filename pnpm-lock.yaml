@@ -25,7 +25,7 @@ devDependencies:
     version: 5.2.1(eslint@8.56.0)
   eslint-plugin-n:
     specifier: ^16.3.0
-    version: 16.6.1(eslint@8.56.0)
+    version: 16.6.2(eslint@8.56.0)
   husky:
     specifier: ^9.0.7
     version: 9.0.7
@@ -1204,8 +1204,8 @@ packages:
       estraverse: 5.3.0
     dev: true
 
-  /eslint-plugin-n@16.6.1(eslint@8.56.0):
-    resolution: {integrity: sha512-M1kE5bVQRLBMDYRZwDhWzlzbp370SRRRC1MHqq4I3L2Tatey+9/2csc5mwLDPlmhJaDvkojbrNUME5/llpRyDg==}
+  /eslint-plugin-n@16.6.2(eslint@8.56.0):
+    resolution: {integrity: sha512-6TyDmZ1HXoFQXnhCTUjVFULReoBPOAjpuiKELMkeP40yffI/1ZRO+d9ug/VC6fqISo2WkuIBk3cvuRPALaWlOQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       eslint: '>=7.0.0'
