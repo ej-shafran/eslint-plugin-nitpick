@@ -68,5 +68,21 @@ ruleTester.run("prefer-if-conditionals", rule, {
       ],
       output: "if (!(!isBad || isOk)) someThing",
     },
+    {
+      name: "should catch ternary expressions",
+      code: "isBad ? doThisThing() : doThatThing()",
+      errors: [
+        {
+          messageId: "preferIfConditionals",
+          suggestions: [
+            {
+              messageId: "useIfStatement",
+              output: "if (isBad) { doThisThing() } else { doThatThing() }",
+            },
+          ],
+        },
+      ],
+      output: "if (isBad) { doThisThing() } else { doThatThing() }",
+    },
   ],
 });
