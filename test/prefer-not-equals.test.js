@@ -20,7 +20,7 @@ ruleTester.run("prefer-not-equals", rule, {
         {
           messageId: "preferNotEquals",
           suggestions: [
-            { messageId: "useNotEquals", output: "if (a !== b) {}" },
+            { messageId: "useNotEquals", output: "if ((a !== b)) {}" },
           ],
         },
       ],
@@ -34,7 +34,7 @@ ruleTester.run("prefer-not-equals", rule, {
           suggestions: [
             {
               messageId: "useNotEquals",
-              output: "if (a !== b || !(a.startsWith())) {}",
+              output: "if ((a !== b || !(a.startsWith()))) {}",
             },
           ],
         },
