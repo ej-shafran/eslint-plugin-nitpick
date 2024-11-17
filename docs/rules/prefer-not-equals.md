@@ -5,3 +5,25 @@
 💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
 <!-- end auto-generated rule header -->
+
+## Rule Details
+
+❌ **Incorrect** code:
+
+```js
+!(a === b);
+!(a == b);
+
+!(a === b || c);
+!(d > e || a === b || c);
+```
+
+✅ **Corrrect** code:
+
+```js
+a !== b;
+a != b;
+
+a !== b || !c;
+!(d > e) || a !== b || !c;
+```
