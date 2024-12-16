@@ -1,5 +1,3 @@
-const RuleTester = require("eslint").RuleTester;
+import { RuleTester } from "eslint";
 
-/** @type {*} */ (RuleTester).setDefaultConfig({
-  parserOptions: { ecmaVersion: "latest" },
-});
+/** @type {*} */ (RuleTester).setDefaultConfig({});

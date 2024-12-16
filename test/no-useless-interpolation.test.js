@@ -1,7 +1,7 @@
 "use strict";
 
-const rule = require("../lib/rules/no-useless-interpolation");
-const RuleTester = require("eslint").RuleTester;
+import rule from "../lib/rules/no-useless-interpolation.js";
+import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 

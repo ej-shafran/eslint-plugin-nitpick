@@ -1,7 +1,7 @@
 "use strict";
 
-const rule = require("../lib/rules/no-redundant-vars");
-const RuleTester = require("eslint").RuleTester;
+import rule from "../lib/rules/no-redundant-vars.js";
+import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 

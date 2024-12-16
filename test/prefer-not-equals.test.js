@@ -1,7 +1,7 @@
 "use strict";
 
-const rule = require("../lib/rules/prefer-not-equals");
-const RuleTester = require("eslint").RuleTester;
+import rule from "../lib/rules/prefer-not-equals.js";
+import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 
