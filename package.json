@@ -3,21 +3,26 @@
   "name": "eslint-plugin-nitpick",
   "version": "0.10.0",
   "description": "An ESLint plugin for nitpicky rules.",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.js",
-    "lib",
+    "dist",
     "LICENSE",
     "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "mocha",
-    "test:watch": "mocha --watch",
-    "test:coverage": "nyc mocha",
+    "test": "vitest run",
+    "test:watch": "vitest dev",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "build:docs": "eslint-doc-generator"
+    "build": "tsc -p tsconfig.build.json",
+    "check-types": "tsc --noEmit",
+    "release": "npm run build && changeset publish",
+    "build:docs": "eslint-doc-generator",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -35,24 +40,27 @@
     "url": "https://github.com/ej-shafran/eslint-plugin-nitpick/issues"
   },
   "peerDependencies": {
-    "eslint": ">=0.8.0"
+    "eslint": ">=9.0.0"
   },
   "homepage": "https://github.com/ej-shafran/eslint-plugin-nitpick#readme",
   "devDependencies": {
-    "@commitlint/cli": "^18.4.4",
-    "@commitlint/config-conventional": "^18.4.4",
-    "@commitlint/types": "^18.4.4",
-    "eslint": "^8.54.0",
-    "eslint-doc-generator": "^1.6.1",
-    "eslint-plugin-eslint-plugin": "^5.1.1",
-    "eslint-plugin-n": "^16.3.0",
-    "husky": "^9.0.7",
-    "mocha": "^10.2.0",
-    "nyc": "^15.1.0",
-    "prettier": "^3.0.3"
-  },
-  "publishConfig": {
-    "@ej-shafran:registry": "https://npm.pkg.github.com"
+    "@changesets/cli": "^2.27.10",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/types": "^19.5.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "@types/estree": "^1.0.6",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "eslint-doc-generator": "^2.0.1",
+    "eslint-plugin-eslint-plugin": "^6.3.2",
+    "eslint-plugin-n": "^17.15.0",
+    "globals": "^15.13.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
 }

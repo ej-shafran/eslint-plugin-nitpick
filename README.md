@@ -10,34 +10,29 @@ npm install -D eslint eslint-plugin-nitpick
 
 ## Configuration
 
-### Old (`.eslintrc.*`)
+To use the recommended configuration:
 
 ```js
-module.exports = {
+import nitpick from "eslint-plugin-nitpick";
+
+export default [
   // ...
-  plugins: [
-    // ...
-    "nitpick",
-  ],
-  extends: [
-    // ...
-    "nitpick/recommended",
-  ],
-};
+  nitpick.configs.recommended,
+];
 ```
 
-### New (`eslint.config.js`)
-
-Either use one of the configs in `eslint-plugin-nitpick/lib/configs` or import the plugin as a standalone from `eslint-plugin-nitpick`.
+To turn on every rule:
 
 ```js
-const nitpickRecommended = require("eslint-plugin-nitpick/lib/configs/recommended");
+import nitpick from "eslint-plugin-nitpick";
 
-module.exports = {
+export default [
   // ...
-  ...nitpickRecommended,
-};
+  nitpick.configs.all,
+];
 ```
+
+See more: [Configuring Plugins](https://eslint.org/docs/latest/use/configure/plugins).
 
 ## Rules
 

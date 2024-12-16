@@ -1,8 +1,9 @@
-const docsUrl = require("../utils/docsUrl");
-const shouldWrapInParens = require("../utils/shouldWrapInParens");
+import docsUrl from "../utils/docsUrl.js";
+import shouldWrapInParens from "../utils/shouldWrapInParens.js";
+import { VariableDeclaration, VariableDeclarator } from "estree";
+import { Rule } from "eslint";
 
-/** @type {import("eslint").Rule.RuleModule} */
-module.exports = {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -17,7 +18,7 @@ module.exports = {
       noRedundantVars: "Don't declare a variable which is only returned",
       inlineVariable: "Inline `{{ variable }}`",
     },
-    fixable: null,
+    fixable: undefined,
   },
   create(context) {
     return {
@@ -40,8 +41,11 @@ module.exports = {
           }
         }
 
-        /** @type {(import("estree").VariableDeclarator & { parent: import("estree").VariableDeclaration }) | undefined} */
-        const def = variable.defs[0]?.node;
+        const def:
+          | (VariableDeclarator & {
+              parent: VariableDeclaration;
+            })
+          | undefined = variable.defs[0]?.node;
         if (!def || !def.init) return;
 
         const id = def.id;
@@ -122,3 +126,5 @@ module.exports = {
     };
   },
 };
+
+export default rule;

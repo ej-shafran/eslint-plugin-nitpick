@@ -10,77 +10,51 @@ on:
 
 jobs:
   ci:
-    name: CI
+    name: Continuous Integration
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
         with:
-          node-version: 18
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Get PNPM store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      - name: Setup PNPM cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
-        run: pnpm install
-      - name: Run lint
-        run: pnpm lint
-      - name: Run tests
-        run: pnpm test:coverage
-
-  docs:
-    name: Build Docs
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
           fetch-depth: 0
+
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: lts/iron
+
       - name: Setup PNPM
         uses: pnpm/action-setup@v2
         with:
-          version: 8
-      - name: Get PNPM store directory
-        shell: bash
+          run_install: true
+
+      - name: Check formatting
         run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      - name: Setup PNPM cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
-        run: pnpm install
-      - name: Build docs
-        run: pnpm build:docs
-      - name: Format code
-        run: pnpm format
-      - name: Add & Commit
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: "docs README.md"
-          message: "chore(docs): build docs"
+          pnpm format:check
+
+      - name: Validate Last Commit Message
+        if: github.event_name == 'push'
+        run: |
+          pnpm commitlint --verbose --last
+
+      - name: Validate All Commit Messages
+        if: github.event_name == 'pull_request'
+        run: |
+          pnpm commitlint --verbose --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }}
+
+      - name: Check types
+        run: |
+          pnpm check-types
+
+      - name: Lint code
+        run: |
+          pnpm lint
+
+      - name: Run tests
+        run: |
+          pnpm test
+
+      - name: Check changeset
+        if: github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main'
+        run: |
+          pnpm changeset status --since=origin/main

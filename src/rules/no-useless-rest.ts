@@ -1,7 +1,7 @@
-const docsUrl = require("../utils/docsUrl");
+import docsUrl from "../utils/docsUrl.js";
+import { Rule } from "eslint";
 
-/** @type {import("eslint").Rule.RuleModule} */
-module.exports = {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -24,7 +24,7 @@ module.exports = {
       noUselessRest: "Don't use a meaningless rest element",
       useNormalVariable: "Use a normal variable instead of a rest element",
     },
-    fixable: null,
+    fixable: undefined,
   },
   create(context) {
     const options = {
@@ -87,3 +87,5 @@ module.exports = {
     };
   },
 };
+
+export default rule;

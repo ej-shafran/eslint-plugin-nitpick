@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "lib": ["ESNext"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["src"]
+}

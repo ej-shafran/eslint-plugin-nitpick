@@ -1,7 +1,5 @@
-"use strict";
-
-const rule = require("../lib/rules/no-useless-rest");
-const RuleTester = require("eslint").RuleTester;
+import rule from "./no-useless-rest.js";
+import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 

@@ -1,7 +1,8 @@
-const docsUrl = require("../utils/docsUrl");
+import docsUrl from "../utils/docsUrl.js";
+import { Rule } from "eslint";
+import { Literal } from "estree";
 
-/** @type {import("eslint").Rule.RuleModule} */
-module.exports = {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -22,17 +23,16 @@ module.exports = {
     return {
       TemplateLiteral(node) {
         const literals = node.expressions.filter(
-          /** @returns {expression is import("estree").Literal & { value: Exclude<import("estree").Literal["value"], RegExp>}} */ (
+          (
             expression,
-          ) =>
+          ): expression is Literal & {
+            value: Exclude<Literal["value"], RegExp>;
+          } =>
             expression.type === "Literal" &&
             !(expression.value instanceof RegExp),
         );
         literals.forEach((literal) => {
-          /**
-           * @param {import("eslint").Rule.RuleFixer} fixer
-           **/
-          function fix(fixer) {
+          function fix(fixer: Rule.RuleFixer) {
             const range = literal.range;
             if (!range) return [];
             return fixer.replaceTextRange(
@@ -60,3 +60,5 @@ module.exports = {
     };
   },
 };
+
+export default rule;
