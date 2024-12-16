@@ -23,6 +23,7 @@ function invalidTestCases(
         },
       ],
     },
+    // !(a || b) === !a && !b
     {
       name: "should fail even for multiple expressions",
       code: `if (!(a ${operator} b || c.something())) {}`,
@@ -32,12 +33,13 @@ function invalidTestCases(
           suggestions: [
             {
               messageId: "useNotEquals",
-              output: `if ((a ${reverseOperator} b || !(c.something()))) {}`,
+              output: `if ((a ${reverseOperator} b && !(c.something()))) {}`,
             },
           ],
         },
       ],
     },
+    // !(a || b || c) === !a && !b && !c
     {
       name: "should fail even for multiple expressions",
       code: `if (!(c || a ${operator} b || d.something())) {}`,
@@ -47,7 +49,7 @@ function invalidTestCases(
           suggestions: [
             {
               messageId: "useNotEquals",
-              output: `if ((!(c) || a ${reverseOperator} b || !(d.something()))) {}`,
+              output: `if ((!(c) && a ${reverseOperator} b && !(d.something()))) {}`,
             },
           ],
         },
