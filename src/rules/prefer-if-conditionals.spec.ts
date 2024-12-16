@@ -1,6 +1,4 @@
-"use strict";
-
-import rule from "../lib/rules/prefer-if-conditionals.js";
+import rule from "./prefer-if-conditionals.js";
 import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();

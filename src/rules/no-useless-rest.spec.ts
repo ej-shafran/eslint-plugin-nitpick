@@ -1,6 +1,4 @@
-"use strict";
-
-import rule from "../lib/rules/no-useless-rest.js";
+import rule from "./no-useless-rest.js";
 import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();

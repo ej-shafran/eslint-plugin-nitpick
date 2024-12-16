@@ -1,6 +1,4 @@
-"use strict";
-
-import rule from "../lib/rules/no-redundant-vars.js";
+import rule from "./no-redundant-vars.js";
 import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();

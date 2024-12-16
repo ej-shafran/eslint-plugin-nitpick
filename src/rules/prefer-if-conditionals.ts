@@ -1,7 +1,7 @@
 import docsUrl from "../utils/docsUrl.js";
+import { Rule } from "eslint";
 
-/** @type {import("eslint").Rule.RuleModule} */
-export default {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -24,10 +24,7 @@ export default {
         if (node.expression.type === "LogicalExpression") {
           const expression = node.expression;
 
-          /**
-           * @param {import("eslint").Rule.RuleFixer} fixer
-           **/
-          const fix = (fixer) => {
+          const fix = (fixer: Rule.RuleFixer) => {
             let expr = expression;
             let left = context.sourceCode.getText(expr.left);
             while (expr?.right.type === "LogicalExpression") {
@@ -60,10 +57,7 @@ export default {
         } else if (node.expression.type === "ConditionalExpression") {
           const expression = node.expression;
 
-          /**
-           * @param {import("eslint").Rule.RuleFixer} fixer
-           **/
-          const fix = (fixer) => {
+          const fix = (fixer: Rule.RuleFixer) => {
             let final = "if (";
             final += context.sourceCode.getText(expression.test);
             final += ") { ";
@@ -90,3 +84,5 @@ export default {
     };
   },
 };
+
+export default rule;

@@ -1,17 +1,17 @@
 import fs from "fs";
 
-import noRedundantVars from "./lib/rules/no-redundant-vars.js";
-import noUselessInterpolation from "./lib/rules/no-useless-interpolation.js";
-import noUselessRest from "./lib/rules/no-useless-rest.js";
-import preferIfConditionals from "./lib/rules/prefer-if-conditionals.js";
-import preferNotEquals from "./lib/rules/prefer-not-equals.js";
+import noRedundantVars from "./rules/no-redundant-vars.js";
+import noUselessInterpolation from "./rules/no-useless-interpolation.js";
+import noUselessRest from "./rules/no-useless-rest.js";
+import preferIfConditionals from "./rules/prefer-if-conditionals.js";
+import preferNotEquals from "./rules/prefer-not-equals.js";
+import { ESLint, Linter, Rule } from "eslint";
 
 const pkg = JSON.parse(
   fs.readFileSync(new URL("./package.json", import.meta.url), "utf8"),
 );
 
-/** @type {Record<string, import("eslint").Rule.RuleModule>} */
-const rules = {
+const rules: Record<string, Rule.RuleModule> = {
   "no-redundant-vars": noRedundantVars,
   "no-useless-interpolation": noUselessInterpolation,
   "no-useless-rest": noUselessRest,
@@ -19,8 +19,7 @@ const rules = {
   "prefer-not-equals": preferNotEquals,
 };
 
-/** @type {import("eslint").ESLint.Plugin} */
-const plugin = {
+const plugin: ESLint.Plugin = {
   meta: {
     name: pkg.name,
     version: pkg.version,
@@ -37,8 +36,7 @@ const plugin = {
   processors: {},
 };
 
-/** @type {import("eslint").Linter.Config} */
-const recommended = {
+const recommended: Linter.Config = {
   plugins: {
     nitpick: plugin,
   },
@@ -51,8 +49,7 @@ const recommended = {
   },
 };
 
-/** @type {import("eslint").Linter.Config} */
-const all = {
+const all: Linter.Config = {
   plugins: {
     nitpick: plugin,
   },

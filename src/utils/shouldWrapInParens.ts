@@ -1,3 +1,4 @@
-/** @param {import("estree").Node} node */
-export default (node) =>
+import { Node } from "estree";
+
+export default (node: Node) =>
   !["Literal", "Identifier", "CallExpression"].includes(node.type);

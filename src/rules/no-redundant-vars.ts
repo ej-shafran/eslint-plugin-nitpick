@@ -1,8 +1,9 @@
 import docsUrl from "../utils/docsUrl.js";
 import shouldWrapInParens from "../utils/shouldWrapInParens.js";
+import { VariableDeclaration, VariableDeclarator } from "estree";
+import { Rule } from "eslint";
 
-/** @type {import("eslint").Rule.RuleModule} */
-export default {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -40,8 +41,11 @@ export default {
           }
         }
 
-        /** @type {(import("estree").VariableDeclarator & { parent: import("estree").VariableDeclaration }) | undefined} */
-        const def = variable.defs[0]?.node;
+        const def:
+          | (VariableDeclarator & {
+              parent: VariableDeclaration;
+            })
+          | undefined = variable.defs[0]?.node;
         if (!def || !def.init) return;
 
         const id = def.id;
@@ -122,3 +126,5 @@ export default {
     };
   },
 };
+
+export default rule;

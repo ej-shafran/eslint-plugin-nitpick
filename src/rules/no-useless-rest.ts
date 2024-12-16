@@ -1,7 +1,7 @@
 import docsUrl from "../utils/docsUrl.js";
+import { Rule } from "eslint";
 
-/** @type {import("eslint").Rule.RuleModule} */
-export default {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -87,3 +87,5 @@ export default {
     };
   },
 };
+
+export default rule;

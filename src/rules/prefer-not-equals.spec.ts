@@ -1,16 +1,12 @@
-"use strict";
-
-import rule from "../lib/rules/prefer-not-equals.js";
+import rule from "./prefer-not-equals.js";
 import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 
-/**
- * @param {"==" | "==="} operator
- * @param {"!=" | "!=="} reverseOperator
- * @returns {RuleTester.InvalidTestCase[]}
- **/
-function invalidTestCases(operator, reverseOperator) {
+function invalidTestCases(
+  operator: "==" | "===",
+  reverseOperator: "!=" | "!==",
+): RuleTester.InvalidTestCase[] {
   return [
     {
       name: "should fail when negating an equality check",

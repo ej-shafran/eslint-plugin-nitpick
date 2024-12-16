@@ -1,6 +1,4 @@
-"use strict";
-
-import rule from "../lib/rules/no-useless-interpolation.js";
+import rule from "./no-useless-interpolation.js";
 import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();

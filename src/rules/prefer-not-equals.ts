@@ -1,11 +1,11 @@
+import { AST, Rule, SourceCode } from "eslint";
 import docsUrl from "../utils/docsUrl.js";
+import { Expression, Node } from "estree";
 
-/**
- * @param {import("estree").Expression} node
- * @param {import("eslint").SourceCode} sourceCode
- * @returns {{ node: import("estree").Node; newText: string; actualChange: boolean }[]}
- */
-function walk(node, sourceCode) {
+function walk(
+  node: Expression,
+  sourceCode: SourceCode,
+): { node: Node; newText: string; actualChange: boolean }[] {
   if (node.type === "BinaryExpression") {
     if (node.operator.startsWith("==")) {
       const newOperator = `!${node.operator.slice(1)}`;
@@ -33,8 +33,7 @@ function walk(node, sourceCode) {
   ];
 }
 
-/** @type {import("eslint").Rule.RuleModule} */
-export default {
+const rule: Rule.RuleModule = {
   meta: {
     hasSuggestions: true,
     docs: {
@@ -55,8 +54,7 @@ export default {
       UnaryExpression(node) {
         if (node.operator !== "!" || !node.range) return;
 
-        /** @type {import("eslint").AST.Range} */
-        const operatorRange = [node.range[0], node.range[0] + 1];
+        const operatorRange: AST.Range = [node.range[0], node.range[0] + 1];
 
         const nodesToFix = walk(node.argument, context.sourceCode);
         if (!nodesToFix.some(({ actualChange }) => actualChange)) return;
@@ -82,3 +80,5 @@ export default {
     };
   },
 };
+
+export default rule;
