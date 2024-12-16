@@ -15,10 +15,12 @@
     "test": "vitest run",
     "test:watch": "vitest dev",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "build": "tsc -p tsconfig.build.json",
     "check-types": "tsc --noEmit",
+    "release": "npm run build && changeset publish",
     "build:docs": "eslint-doc-generator",
     "prepare": "husky"
   },
@@ -42,6 +44,7 @@
   },
   "homepage": "https://github.com/ej-shafran/eslint-plugin-nitpick#readme",
   "devDependencies": {
+    "@changesets/cli": "^2.27.10",
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.3",
     "@commitlint/types": "^18.6.1",
@@ -60,9 +63,6 @@
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
-  },
-  "publishConfig": {
-    "@ej-shafran:registry": "https://npm.pkg.github.com"
   },
   "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
 }

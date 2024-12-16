@@ -8,8 +8,8 @@ import preferNotEquals from "./rules/prefer-not-equals.js";
 import { ESLint, Linter, Rule } from "eslint";
 
 const pkg = JSON.parse(
-  fs.readFileSync(new URL("./package.json", import.meta.url), "utf8"),
-);
+  fs.readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+) as typeof import("../package.json");
 
 const rules: Record<string, Rule.RuleModule> = {
   "no-redundant-vars": noRedundantVars,

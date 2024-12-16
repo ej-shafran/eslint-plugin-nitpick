@@ -7,6 +7,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true
   },
