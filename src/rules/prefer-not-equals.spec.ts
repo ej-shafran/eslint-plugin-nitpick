@@ -3,51 +3,24 @@ import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester();
 
+type Operator = "==" | "===";
+type ReverseOperator = "!=" | "!==";
+
 function invalidTestCases(
-  operator: "==" | "===",
-  reverseOperator: "!=" | "!==",
+  operator: Operator,
+  reverseOperator: ReverseOperator,
 ): RuleTester.InvalidTestCase[] {
   return [
     {
       name: "should fail when negating an equality check",
-      code: `if (!(a ${operator} b)) {}`,
+      code: `!(a ${operator} b)`,
       errors: [
         {
           messageId: "preferNotEquals",
           suggestions: [
             {
               messageId: "useNotEquals",
-              output: `if ((a ${reverseOperator} b)) {}`,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "should fail even for multiple expressions",
-      code: `if (!(a ${operator} b || c.something())) {}`,
-      errors: [
-        {
-          messageId: "preferNotEquals",
-          suggestions: [
-            {
-              messageId: "useNotEquals",
-              output: `if ((a ${reverseOperator} b || !(c.something()))) {}`,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "should fail even for multiple expressions",
-      code: `if (!(c || a ${operator} b || d.something())) {}`,
-      errors: [
-        {
-          messageId: "preferNotEquals",
-          suggestions: [
-            {
-              messageId: "useNotEquals",
-              output: `if ((!(c) || a ${reverseOperator} b || !(d.something()))) {}`,
+              output: `(a ${reverseOperator} b)`,
             },
           ],
         },
@@ -56,20 +29,38 @@ function invalidTestCases(
   ];
 }
 
+function validTestCases(
+  operator: Operator,
+  reverseOperator: ReverseOperator,
+): RuleTester.ValidTestCase[] {
+  return [
+    {
+      name: `should allow comparing things with ${reverseOperator}`,
+      code: `(a ${reverseOperator} b)`,
+    },
+    {
+      name: "should ignore more complex cases",
+      code: `!(a ${operator} b && c ${operator} d)`,
+    },
+    {
+      name: "should ignore more complex cases",
+      code: `!(a ${operator} b || c ${operator} d)`,
+    },
+  ];
+}
+
 ruleTester.run("prefer-not-equals", rule, {
   valid: [
     {
-      name: "should allow comparing things with !==",
-      code: ["if (a !== b) {}"].join("\n"),
-    },
-    {
-      name: "should allow comparing things with !=",
-      code: ["if (a != b) {}"].join("\n"),
+      name: "should allow inverting other operators",
+      code: "!(a())",
     },
     {
       name: "should allow inverting other operators",
-      code: ["if (!a()) {}"].join("\n"),
+      code: "!(a > b)",
     },
+    ...validTestCases("===", "!=="),
+    ...validTestCases("==", "!="),
   ],
   invalid: [...invalidTestCases("===", "!=="), ...invalidTestCases("==", "!=")],
 });
