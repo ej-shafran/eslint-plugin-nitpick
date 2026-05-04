@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.1
+
+### Patch Changes
+
+- feeb433: Fix false positives in `no-redundant-vars` for class methods and arrow functions.
+
 ## 0.12.0
 
 ### Minor Changes
