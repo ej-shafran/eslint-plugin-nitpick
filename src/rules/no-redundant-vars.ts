@@ -1,6 +1,10 @@
 import docsUrl from "../utils/docsUrl.js";
 import shouldWrapInParens from "../utils/shouldWrapInParens.js";
-import { VariableDeclaration, VariableDeclarator } from "estree";
+import {
+  BlockStatement,
+  VariableDeclaration,
+  VariableDeclarator,
+} from "estree";
 import { Rule } from "eslint";
 
 const rule: Rule.RuleModule = {
@@ -31,10 +35,15 @@ const rule: Rule.RuleModule = {
 
         if (!variable || variable.references.length !== 2) return;
 
-        if (scope.block.type === "FunctionDeclaration") {
+        if (
+          scope.block.type === "FunctionDeclaration" ||
+          scope.block.type === "FunctionExpression" ||
+          (scope.block.type === "ArrowFunctionExpression" &&
+            scope.block.body.type === "BlockStatement")
+        ) {
           const declaration = variable.defs[0]?.parent;
           if (declaration && declaration.type === "VariableDeclaration") {
-            const functionBlock = scope.block.body;
+            const functionBlock = scope.block.body as BlockStatement;
             const returnIndex = functionBlock.body.indexOf(node);
             const definitionIndex = functionBlock.body.indexOf(declaration);
             if (returnIndex - definitionIndex > 1) return;
