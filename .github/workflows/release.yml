@@ -10,6 +10,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   release:
@@ -25,11 +26,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/iron
+          registry-url: "https://registry.npmjs.org"
 
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
         with:
           run_install: true
+
+      - name: Update NPM
+        run: npm i -g npm@latest
 
       - name: Create Release Pull Request or Publish to NPM
         id: changesets
@@ -39,4 +44,4 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_TOKEN: ""
