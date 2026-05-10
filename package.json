@@ -52,7 +52,7 @@
     "@eslint/js": "^9.17.0",
     "@types/estree": "^1.0.6",
     "@types/node": "^22.10.2",
-    "eslint": "^9.17.0",
+    "eslint": "^10.3.0",
     "eslint-doc-generator": "^3.3.2",
     "eslint-plugin-eslint-plugin": "^6.3.2",
     "eslint-plugin-n": "^17.15.0",
