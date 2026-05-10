@@ -40,27 +40,26 @@
     "url": "https://github.com/ej-shafran/eslint-plugin-nitpick/issues"
   },
   "peerDependencies": {
-    "eslint": ">=9.0.0"
+    "eslint": "^9.0.0 || ^10.0.0"
   },
   "homepage": "https://github.com/ej-shafran/eslint-plugin-nitpick#readme",
   "devDependencies": {
-    "@changesets/cli": "^2.27.10",
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@commitlint/types": "^19.5.0",
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.17.0",
-    "@types/estree": "^1.0.6",
-    "@types/node": "^22.10.2",
-    "eslint": "^9.17.0",
-    "eslint-doc-generator": "^3.3.2",
-    "eslint-plugin-eslint-plugin": "^6.3.2",
-    "eslint-plugin-n": "^17.15.0",
-    "globals": "^17.6.0",
-    "husky": "^9.1.7",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "@changesets/cli": "2.31.0",
+    "@commitlint/cli": "21.0.0",
+    "@commitlint/config-conventional": "21.0.0",
+    "@commitlint/types": "21.0.0",
+    "@eslint/js": "10.0.1",
+    "@types/estree": "1.0.9",
+    "@types/node": "22.19.8",
+    "eslint": "10.3.0",
+    "eslint-doc-generator": "3.3.2",
+    "eslint-plugin-eslint-plugin": "7.3.3",
+    "eslint-plugin-n": "18.0.1",
+    "globals": "17.6.0",
+    "husky": "9.1.7",
+    "prettier": "3.8.3",
+    "typescript": "6.0.3",
+    "vitest": "4.1.5"
   },
-  "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800"
 }

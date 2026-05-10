@@ -50,12 +50,12 @@ const rule: Rule.RuleModule = {
           }
         }
 
-        const def:
-          | (VariableDeclarator & {
-              parent: VariableDeclaration;
-            })
-          | undefined = variable.defs[0]?.node;
-        if (!def || !def.init) return;
+        const defNode = variable.defs[0]?.node;
+        if (!defNode || defNode.type !== "VariableDeclarator") return;
+        const def = defNode as VariableDeclarator & {
+          parent: VariableDeclaration;
+        };
+        if (!def.init) return;
 
         const id = def.id;
         const init = def.init;
