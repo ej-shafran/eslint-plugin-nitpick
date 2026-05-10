@@ -36,6 +36,11 @@ jobs:
       - name: Update NPM
         run: pnpm i -g npm@latest
 
+      - name: TEMPORARY - Validate NPM Version
+        run: |
+          npm --version
+          which npm
+
       - name: Create Release Pull Request or Publish to NPM
         id: changesets
         uses: changesets/action@v1
