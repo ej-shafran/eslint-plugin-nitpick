@@ -33,6 +33,9 @@ jobs:
         with:
           run_install: true
 
+      - name: Update NPM
+        run: pnpm i -g npm@latest
+
       - name: Create Release Pull Request or Publish to NPM
         id: changesets
         uses: changesets/action@v1
