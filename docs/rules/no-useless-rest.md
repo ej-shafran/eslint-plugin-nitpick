@@ -1,4 +1,6 @@
-# Warns against using a rest element without destructuring other properties/elements (`nitpick/no-useless-rest`)
+# nitpick/no-useless-rest
+
+📝 Warns against using a rest element without destructuring other properties/elements.
 
 💼 This rule is enabled in the following configs: 🌐 `all`, ✅ `recommended`.
 
@@ -30,10 +32,10 @@ const [someElement, ...rest] = array;
 
 <!-- begin auto-generated rule options list -->
 
-| Name     | Type    | Default |
-| :------- | :------ | :------ |
-| `array`  | Boolean | `true`  |
-| `object` | Boolean | `true`  |
+| Name     | Description                                 | Type    | Default |
+| :------- | :------------------------------------------ | :------ | :------ |
+| `array`  | Validate this rule for array rest elements  | Boolean | `true`  |
+| `object` | Validate this rule for object rest elements | Boolean | `true`  |
 
 <!-- end auto-generated rule options list -->
 
