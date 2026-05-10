@@ -5,7 +5,7 @@ import noUselessInterpolation from "./rules/no-useless-interpolation.js";
 import noUselessRest from "./rules/no-useless-rest.js";
 import preferIfConditionals from "./rules/prefer-if-conditionals.js";
 import preferNotEquals from "./rules/prefer-not-equals.js";
-import { ESLint, Linter, Rule } from "eslint";
+import { Linter, Rule } from "eslint";
 
 const pkg = JSON.parse(
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf8"),
@@ -19,7 +19,7 @@ const rules: Record<string, Rule.RuleModule> = {
   "prefer-not-equals": preferNotEquals,
 };
 
-const plugin: ESLint.Plugin = {
+const plugin = {
   meta: {
     name: pkg.name,
     version: pkg.version,
@@ -36,7 +36,7 @@ const plugin: ESLint.Plugin = {
   processors: {},
 };
 
-const recommended: Linter.Config = {
+const recommended = {
   plugins: {
     nitpick: plugin,
   },
@@ -46,16 +46,16 @@ const recommended: Linter.Config = {
     "nitpick/no-useless-rest": "error",
     "nitpick/prefer-if-conditionals": "error",
     "nitpick/prefer-not-equals": "error",
-  },
+  } as Linter.RulesRecord,
 };
 
-const all: Linter.Config = {
+const all = {
   plugins: {
     nitpick: plugin,
   },
   rules: Object.fromEntries(
     Object.keys(rules).map((key) => [`nitpick/${key}`, 2]),
-  ),
+  ) as Linter.RulesRecord,
 };
 
 export default plugin;
