@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.12.2
+
+### Patch Changes
+
+- 1c19d16: Update rule documentation.
+- 0416fdf: Fix type issues with the way the plugin object is defined ([#73](https://github.com/ej-shafran/eslint-plugin-nitpick/issues/73)).
+
 ## 0.12.1
 
 ### Patch Changes
