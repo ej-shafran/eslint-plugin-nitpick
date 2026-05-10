@@ -15,11 +15,18 @@ const rule: Rule.RuleModule = {
       {
         type: "object",
         properties: {
-          array: { type: "boolean", default: true },
-          object: { type: "boolean", default: true },
+          array: {
+            description: "Validate this rule for array rest elements",
+            type: "boolean",
+          },
+          object: {
+            description: "Validate this rule for object rest elements",
+            type: "boolean",
+          },
         },
       },
     ],
+    defaultOptions: [{ array: true, object: true }],
     messages: {
       noUselessRest: "Don't use a meaningless rest element",
       useNormalVariable: "Use a normal variable instead of a rest element",

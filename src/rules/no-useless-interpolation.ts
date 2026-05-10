@@ -1,6 +1,6 @@
 import docsUrl from "../utils/docsUrl.js";
 import { Rule } from "eslint";
-import { Literal } from "estree";
+import type { Literal } from "estree";
 
 const rule: Rule.RuleModule = {
   meta: {
