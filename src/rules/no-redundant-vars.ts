@@ -1,6 +1,6 @@
 import docsUrl from "../utils/docsUrl.js";
 import shouldWrapInParens from "../utils/shouldWrapInParens.js";
-import {
+import type {
   BlockStatement,
   VariableDeclaration,
   VariableDeclarator,
