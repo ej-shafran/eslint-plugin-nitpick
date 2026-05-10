@@ -1,4 +1,6 @@
-# Prefer an `if` statement to using logical operators (`?:`, `&&` or `||`) in expressions (`nitpick/prefer-if-conditionals`)
+# nitpick/prefer-if-conditionals
+
+📝 Prefer an `if` statement to using logical operators (`?:`, `&&` or `||`) in expressions.
 
 💼 This rule is enabled in the following configs: 🌐 `all`, ✅ `recommended`.
 

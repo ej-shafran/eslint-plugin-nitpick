@@ -1,4 +1,6 @@
-# Warns against variables that are returned without any other usage (`nitpick/no-redundant-vars`)
+# nitpick/no-redundant-vars
+
+📝 Warns against variables that are returned without any other usage.
 
 💼 This rule is enabled in the following configs: 🌐 `all`, ✅ `recommended`.
 

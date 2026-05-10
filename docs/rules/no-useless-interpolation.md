@@ -1,4 +1,6 @@
-# Warns against template-literal interpolation with a literal (`nitpick/no-useless-interpolation`)
+# nitpick/no-useless-interpolation
+
+📝 Warns against template-literal interpolation with a literal.
 
 💼 This rule is enabled in the following configs: 🌐 `all`, ✅ `recommended`.
 
